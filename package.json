@@ -1,9 +1,9 @@
 {
   "private": false,
   "name": "@icare-jp/vue-props-story-fn-factory",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
-    "build": "tsc --emitDeclarationOnly",
+    "build": "tsc",
     "prepare": "npm run build",
     "lint": "eslint --ext .tsx,.ts",
     "lintfix": "prettier --write '**/*.{ts,tsx}' && eslint --ext .tsx,.ts --fix .",
@@ -52,9 +52,5 @@
     "storybook": "^6.0.5",
     "typescript": "^3.9.7",
     "vue": "^2.6.11"
-  },
-  "peerDependencies": {
-    "@storybook/addons": "6.*",
-    "vue": "*"
   }
 }
