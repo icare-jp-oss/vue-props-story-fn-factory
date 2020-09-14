@@ -1,4 +1,5 @@
-import { StoryFn, PropsStoryFn } from './type'
+import type { PropOptions } from 'vue'
+import type { StoryFn, PropsStoryFn } from './type'
 
 export function PropsStoryFnFactory<Args = unknown>(propsStoryFn: PropsStoryFn<Args>): PropsStoryFn<Args>
 export function PropsStoryFnFactory<Args = unknown>(propsStoryFn: PropsStoryFn<Args>, fakeProps: Args): StoryFn<Args>
@@ -9,7 +10,28 @@ export function PropsStoryFnFactory<Args = unknown>(
   const storyFn: StoryFn<Args> = (props, context) => {
     const componentOptions = propsStoryFn(props, context)
     if ('props' in componentOptions) {
-      return componentOptions
+      if (Array.isArray(componentOptions.props)) {
+        return {
+          ...componentOptions,
+          props: [...Object.keys(context.argTypes), ...componentOptions.props],
+        }
+      } else {
+        return {
+          ...componentOptions,
+          props: {
+            ...Object.keys(context.argTypes).reduce(
+              (sum, propName) => ({
+                ...sum,
+                [propName]: {
+                  default: context.argTypes[propName].defaultValue,
+                },
+              }),
+              {} as Record<string, PropOptions>,
+            ),
+            ...componentOptions.props,
+          },
+        }
+      }
     }
     return {
       ...componentOptions,
