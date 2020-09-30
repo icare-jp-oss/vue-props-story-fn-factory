@@ -4,4 +4,7 @@ export type StoryFn<Props = unknown> = BaseStoryFn<Props, import('vue').Componen
 
 export type PropsStoryFn<Props = unknown> = StoryFn & {
   args?: Props
+  parameters?: {
+    puppeteerTest?: (page: import('puppeteer').Page) => void | Promise<void>
+  }
 }
