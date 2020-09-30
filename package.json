@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@icare-jp/vue-props-story-fn-factory",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
