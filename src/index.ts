@@ -1,6 +1,7 @@
 import type { PropOptions } from 'vue'
-import type { StoryFn, PropsStoryFn } from './type'
+import type { StoryFn, PropsStoryFn, DemoContext } from './type'
 
+export { DemoContext }
 export function PropsStoryFnFactory<Args = unknown>(propsStoryFn: PropsStoryFn<Args>): PropsStoryFn<Args>
 export function PropsStoryFnFactory<Args = unknown>(propsStoryFn: PropsStoryFn<Args>, fakeProps: Args): StoryFn<Args>
 export function PropsStoryFnFactory<Args = unknown>(

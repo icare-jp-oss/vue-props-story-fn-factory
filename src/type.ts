@@ -3,7 +3,7 @@ type BaseStoryFn<Props, T> = (a: Props, p: import('@storybook/addons').StoryCont
 export type StoryFn<Props = unknown> = BaseStoryFn<Props, import('vue').ComponentOptions<any, any, any, any, any, any>>
 
 export type DemoContext = {
-  find: import('puppeteer').ElementHandle['$']
+  find: import('puppeteer').ElementHandle['$'] | Element['querySelector']
   snapshot: () => Promise<void>
 }
 
